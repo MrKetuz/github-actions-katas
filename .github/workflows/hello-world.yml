@@ -3,7 +3,15 @@ env:
   docker_username: ${{ secrets.DOCKER_USERNAME }}
   docker_password: ${{ secrets.DOCKER_PASSWORD }}
   git_commit: ${{ github.sha }}
-on: push
+on: 
+  push:
+    branches:
+      - 'main'
+  pull_request:
+    types:
+      - opened
+    branches:
+      - 'main'
 jobs:
   Clone-down:
     runs-on: ubuntu-latest
